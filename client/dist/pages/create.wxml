@@ -1,0 +1,33 @@
+
+    <view class="page">
+        <view class="page__bd">
+            <form bindsubmit="formSubmit">
+                <view class="weui-cells__title">吐槽</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">
+                            <textarea bindinput="bindKeyInput" class="weui-textarea" focus placeholder="就没有一点想说的么？" name="content" style="height: 3.3em" value="{{content}}"/>
+                        </view>
+                    </view>
+                </view>
+                <view class="weui-btn-area">
+                    <button class="weui-btn c-btn" formType="submit">确定</button>
+                    <text  wx:if="{{errorMsg}}" style="font-size:14px;color:#54bcc7">{{errorMsg}}</text>
+                </view>
+            </form>
+        </view>
+    </view>
+    
+    <view class="wetoast {{$toast$reveal ? 'wetoast_show' : ''}}">
+        <view class="wetoast__mask"/>
+        <view class="wetoast__bd" animation="{{$toast$animationData}}">
+            <block  wx:if="{{$toast$img}}">
+                <view class="wetoast__bd__img {{$toast$imgClassName || ''}}">
+                    <image class="wetoast__bd__img_desc" src="{{$toast$img}}" mode="{{$toast$imgMode || 'scaleToFill'}}"/>
+                </view>
+            </block>
+            <block  wx:if="{{$toast$title}}">
+                <view class="wetoast__bd__title {{$toast$titleClassName || ''}}">{{$toast$title}}</view>
+            </block>
+        </view>
+    </view>

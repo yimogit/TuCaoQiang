@@ -1,0 +1,2 @@
+@import "./../npm/wepy-com-toast/toast.wxss";
+.c-btn{background-color:#54bcc7;color:white}

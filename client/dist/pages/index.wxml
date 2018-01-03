@@ -1,0 +1,50 @@
+
+  <view class="page">
+    <view class="page__bd">
+      <view class="weui-panel">
+        <view class="weui-panel__hd"  wx:if="{{loginUser}}">
+          
+    <view class="user-line"  wx:if="{{$userline$loginUser && $userline$loginUser.nickName}}">
+        <image class="user-line-avatar" src="{{$userline$loginUser.avatarUrl}}"/>
+        <view class="weui-flex__item user-line-nickname">欢迎您：{{$userline$loginUser.nickName}}{{$userline$loginUser.gender==1?'先生':'女士'}}</view>
+    </view>
+
+        </view>
+        <view class="weui-panel__bd">
+          <view class="weui-media-box weui-media-box_text"  wx:for="{{arr}}" wx:key="unique" wx:for-item="item" wx:for-index="i">
+            <view class="weui-media-box__desc">{{item.content}}</view>
+            <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">{{item.nickName}}</view>
+              <view class="weui-media-box__info__meta">{{item.showTime}}</view>
+              <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">分享</view> -->
+            </view>
+          </view>
+        </view>
+        
+    <view class="weui-loadmore b-loading" data-is-show="{{$loadmore$loadingStatus==1}}"  wx:if="{{$loadmore$loadingStatus!=2}}">
+        <view class="weui-loading"/>
+        <view class="weui-loadmore__tips">
+            {{$loadmore$loadingText||'拼命加载中...'}}
+        </view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line b-loading" data-is-show="{{$loadmore$loadingStatus==2}}"  wx:if="{{$loadmore$loadingStatus==2}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{$loadmore$loadendText||'加载完毕'}}</view>
+    </view>
+
+      </view>
+    </view>
+  </view>
+    
+    <view class="wetoast {{$toast$reveal ? 'wetoast_show' : ''}}">
+        <view class="wetoast__mask"/>
+        <view class="wetoast__bd" animation="{{$toast$animationData}}">
+            <block  wx:if="{{$toast$img}}">
+                <view class="wetoast__bd__img {{$toast$imgClassName || ''}}">
+                    <image class="wetoast__bd__img_desc" src="{{$toast$img}}" mode="{{$toast$imgMode || 'scaleToFill'}}"/>
+                </view>
+            </block>
+            <block  wx:if="{{$toast$title}}">
+                <view class="wetoast__bd__title {{$toast$titleClassName || ''}}">{{$toast$title}}</view>
+            </block>
+        </view>
+    </view>

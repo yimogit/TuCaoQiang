@@ -1,0 +1,31 @@
+<style lang="less">
+.page__bd .weui-loadmore__tips {
+  background-color: #ffffff; 
+}
+/*loading data-is-show标识*/
+.b-loading{text-align:center;color:#cbcbcb;display:block;}
+.b-loading[data-is-show=true]{opacity: 1}
+.b-loading[data-is-show=false]{opacity: 0}
+
+</style>
+<template>
+    <view class="weui-loadmore b-loading" data-is-show="{{loadingStatus==1}}" wx:if="{{loadingStatus!=2}}" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">
+            {{loadingText||'拼命加载中...'}}
+        </view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line b-loading" data-is-show="{{loadingStatus==2}}" wx:if="{{loadingStatus==2}}">
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">{{loadendText||'加载完毕'}}</view>
+    </view>
+</template>
+<script>
+import wepy from "wepy";
+export default class Panel extends wepy.component {
+  props = {
+    loadingStatus: Number,
+    loadingText: String,
+    loadendText: String
+  };
+}
+</script>

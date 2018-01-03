@@ -1,0 +1,35 @@
+<style lang="less">
+.user-line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .user-line-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+  }
+  .user-line-nickname {
+    padding-left: 10rpx;
+    color: #aaa;
+    min-height: 80rpx;
+    line-height: 80rpx;
+  }
+}
+</style>
+<template>
+    <view class="user-line" wx:if="{{loginUser && loginUser.nickName}}">
+        <image class="user-line-avatar" src="{{loginUser.avatarUrl}}"></image>
+        <view  class="weui-flex__item user-line-nickname">欢迎您：{{loginUser.nickName}}{{loginUser.gender==1?'先生':'女士'}}</view>
+    </view>
+</template>
+<script>
+import wepy from "wepy";
+export default class Panel extends wepy.component {
+  props = {
+    loginUser:{
+        type:Object,
+        default:null
+    }
+  };
+}
+</script>

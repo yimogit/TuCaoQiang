@@ -1,0 +1,1 @@
+.user-line{display:flex;flex-direction:row;align-items:center}.user-line .user-line-avatar{width:80rpx;height:80rpx;border-radius:50%}.user-line .user-line-nickname{padding-left:10rpx;color:#aaa;min-height:80rpx;line-height:80rpx}
